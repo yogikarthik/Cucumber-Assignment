@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,9 +44,9 @@ WebDriver driver;
 	
 	public void updateUserInformation(){
 		if(Title_PersonalInformation.isDisplayed()){
-			Textbox_FirstName.click();
-			Textbox_FirstName.sendKeys("");
-			Textbox_FirstName.sendKeys("Test");
+			//Textbox_FirstName.click();
+			Textbox_FirstName.sendKeys(Keys.ENTER);;
+			Textbox_FirstName.sendKeys("1");
 			Textbox_oldpwd.sendKeys("12345");
 			Button_Save.click();
 		}

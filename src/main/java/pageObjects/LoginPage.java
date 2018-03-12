@@ -7,12 +7,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPage {
+import dataproviders.ConfigFileReader;
+
+public class LoginPage extends ConfigFileReader{
 	WebDriver driver;
+	ConfigFileReader configFileReader;
 	
 	public LoginPage(WebDriver driver){
 		this.driver = driver;
 		PageFactory.initElements(driver,this);
+		configFileReader=new ConfigFileReader();
 	}
 @FindBy(how=How.XPATH, using= "//a[@class='login']")
 private WebElement Link_signIn;
@@ -32,27 +36,24 @@ private WebElement Title_MyAccount;
 private WebElement Option_Tshirts; 
 
     public void openApplication(){
-	
-    	driver.get("http://automationpractice.com");
+    	
+    	driver.get(configFileReader.getApplicationUrl());
     }
     public void clickSignIn(){
     	if(Link_signIn.isDisplayed()){
     	Link_signIn.click();
     	}
     }
-	public void userLogin(){
-		//String usrname="automation22@gmail.com";
-		//String Pwd="12345";
+	public void userLogin(){		
 		if(Title_Authentication.isDisplayed()){
-		Textbox_Email.sendKeys("automation22@gmail.com");	
-		Textbox_Pwd.sendKeys("12345");
+		Textbox_Email.sendKeys(configFileReader.enterUserName());	
+		Textbox_Pwd.sendKeys(configFileReader.enterpassword());
 		button_Signin.click();
 	}
 	}
 	public void verifyUserName(){
-		String ExpectedValue="Test auto";
 		String ActualValue=Verify_Username.getText();
-		if(ExpectedValue.equalsIgnoreCase(ActualValue)){
+		if(ActualValue.equalsIgnoreCase(configFileReader.getUserName())){
 			System.out.println("The application opened for the registered user");
 			String PageTitle=Title_MyAccount.getText();
 		}

@@ -14,6 +14,7 @@ import org.openqa.selenium.interactions.Actions;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import dataproviders.ConfigFileReader;
 import managers.PageObjectManager;
 import pageObjects.CheckoutPage;
 import pageObjects.LoginPage;
@@ -32,13 +33,15 @@ public class OrderTshirt {
 	ProductSelectionPage productselectionpage;
 	UserInformationPage userinformationpage;
 	PageObjectManager pageObjectManager;
+	ConfigFileReader configFileReader;
 	
 	@Given("^Open application and click signIn link$")
 	public void open_application_and_click_signIn_link() throws Throwable {
-		System.setProperty("webdriver.chrome.driver", "C:/TestLeaf/drivers/chromedriver.exe");
+		configFileReader=new ConfigFileReader();
+		System.setProperty("webdriver.chrome.driver", configFileReader.getDriverPath());
 		driver=new ChromeDriver();
 	    driver.manage().window().maximize();
-	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	    driver.manage().timeouts().implicitlyWait(configFileReader.getImplicitlyWait(), TimeUnit.SECONDS);
 	    pageObjectManager = new PageObjectManager(driver);
 	    loginpage = pageObjectManager.getLoginPage();
 	    loginpage.openApplication();

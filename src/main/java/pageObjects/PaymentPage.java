@@ -33,12 +33,12 @@ WebDriver driver;
 		String selectedpaymenttype="BANK-WIRE PAYMENT";
 		if(Title_OrderSummary.isDisplayed()){
 			String paymentOption=Title_Paymenttype.getText();			
-			if(paymentOption.equalsIgnoreCase(selectedpaymenttype)){
+			//if(paymentOption.equalsIgnoreCase(selectedpaymenttype)){
 				//JavascriptExecutor js=(JavascriptExecutor)driver;
 				//js.executeScript("window.scrollBy(0,3000)");
 				Button_ConfirmOrder.click();
 				System.out.println("The user confirms the payment type");
-			}
+			//}
 		}
 	}
 	

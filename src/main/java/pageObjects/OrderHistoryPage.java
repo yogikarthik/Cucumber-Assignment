@@ -32,5 +32,6 @@ public class OrderHistoryPage {
 		String ActualOrderItem="Faded Short Sleeve T-shirts";
 		String OrderedItemName=Verify_Order.getText();
 		OrderedItemName.equals(ActualOrderItem);
+		driver.close();
 	}
 }
