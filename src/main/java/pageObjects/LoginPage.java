@@ -8,6 +8,8 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 import dataproviders.ConfigFileReader;
+import managers.FileReaderManager;
+import managers.PageObjectManager;
 
 public class LoginPage extends ConfigFileReader{
 	WebDriver driver;
@@ -35,9 +37,9 @@ private WebElement Title_MyAccount;
 @FindBy(how=How.XPATH, using= "//a[contains(text(),'T-shirts')]/following::*[contains(text(),'T-shirts')]")
 private WebElement Option_Tshirts; 
 
-    public void openApplication(){
+    public void openApplication(){    	
+    	driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
     	
-    	driver.get(configFileReader.getApplicationUrl());
     }
     public void clickSignIn(){
     	if(Link_signIn.isDisplayed()){
@@ -46,14 +48,14 @@ private WebElement Option_Tshirts;
     }
 	public void userLogin(){		
 		if(Title_Authentication.isDisplayed()){
-		Textbox_Email.sendKeys(configFileReader.enterUserName());	
-		Textbox_Pwd.sendKeys(configFileReader.enterpassword());
+		Textbox_Email.sendKeys(FileReaderManager.getInstance().getConfigReader().enterUserName());	
+		Textbox_Pwd.sendKeys(FileReaderManager.getInstance().getConfigReader().enterpassword());
 		button_Signin.click();
 	}
 	}
 	public void verifyUserName(){
 		String ActualValue=Verify_Username.getText();
-		if(ActualValue.equalsIgnoreCase(configFileReader.getUserName())){
+		if(ActualValue.equalsIgnoreCase(FileReaderManager.getInstance().getConfigReader().getUserName())){
 			System.out.println("The application opened for the registered user");
 			String PageTitle=Title_MyAccount.getText();
 		}

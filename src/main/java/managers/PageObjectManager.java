@@ -2,7 +2,7 @@ package managers;
 
 import org.openqa.selenium.WebDriver;
 
-
+import dataproviders.ConfigFileReader;
 import pageObjects.CheckoutPage;
 import pageObjects.LoginPage;
 import pageObjects.OrderHistoryPage;
@@ -21,11 +21,13 @@ public class PageObjectManager {
 	private UserInformationPage userinformationpage;
 	
 	
+	
 	public PageObjectManager(WebDriver driver) {
 		 
 		this.driver = driver;
  
 	}
+	
 	public LoginPage getLoginPage(){
 		 
 		return (loginpage == null) ? loginpage = new LoginPage(driver) : loginpage;
@@ -39,7 +41,7 @@ public class PageObjectManager {
 	}
 	public CheckoutPage getCheckoutPage(){
 		 
-		return (checkoutpage == null) ? checkoutpage = new CheckoutPage(driver) : checkoutpage;
+	return (checkoutpage == null) ? checkoutpage = new CheckoutPage(driver) : checkoutpage;
  
 	}
 	public PaymentPage getPaymentPage(){
