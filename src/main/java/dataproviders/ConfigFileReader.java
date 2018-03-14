@@ -15,6 +15,7 @@ import cucumber.api.java.Before;
 import enums.DriverType;
 import enums.EnvironmentType;
 import managers.PageObjectManager;
+import managers.WebDriverManager;
 import pageObjects.CheckoutPage;
 import pageObjects.LoginPage;
 import pageObjects.OrderHistoryPage;
@@ -25,6 +26,10 @@ import pageObjects.UserInformationPage;
 public class ConfigFileReader {
 	private Properties properties;
 	private final String propertyFilepath="Configs//configurations.properties";
+	WebDriverManager webDriverManager;
+	LoginPage loginpage;
+	PageObjectManager pageObjectManager;
+	WebDriver driver;
 	
 	
 	public ConfigFileReader(){
@@ -59,6 +64,12 @@ public class ConfigFileReader {
 			}
 			return 30;
 				}
+		public void initiateBrowser(){
+			webDriverManager = new WebDriverManager();
+		    driver=webDriverManager.getDriver();
+		    //pageObjectManager = new PageObjectManager(driver);
+			//loginpage = pageObjectManager.getLoginPage();
+		}
 			
 		public String getDriverPath(){
 			String driverPath=properties.getProperty("driverPath");

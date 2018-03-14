@@ -22,7 +22,7 @@ WebDriver driver;
 	private WebElement Tab_UserInformation;
 	@FindBy(how=How.XPATH, using= "//h1[contains(text(),'Your personal information')]")
 	private WebElement Title_PersonalInformation;
-	@FindBy(how=How.XPATH, using= "//h1[contains(text(),'Your personal information')]")
+	@FindBy(how=How.ID, using= "firstname")
 	private WebElement Textbox_FirstName;
 	@FindBy(how=How.XPATH, using= "//span[contains(text(),'Save')]")
 	private WebElement Button_Save;
@@ -44,9 +44,9 @@ WebDriver driver;
 	
 	public void updateUserInformation(){
 		if(Title_PersonalInformation.isDisplayed()){
-			//Textbox_FirstName.click();
-			Textbox_FirstName.sendKeys(Keys.ENTER);;
-			Textbox_FirstName.sendKeys("1");
+			Textbox_FirstName.click();
+			//Textbox_FirstName.sendKeys(Keys.ENTER);;
+			Textbox_FirstName.sendKeys("");
 			Textbox_oldpwd.sendKeys("12345");
 			Button_Save.click();
 		}

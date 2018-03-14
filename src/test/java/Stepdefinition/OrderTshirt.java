@@ -45,15 +45,15 @@ public class OrderTshirt {
 	
 	@Given("^user login to the application$")
 	public void user_login_to_the_application() throws Throwable {
-	webDriverManager = new WebDriverManager();
-	driver = webDriverManager.getDriver();
-	pageObjectManager = new PageObjectManager(driver);
-	loginpage = pageObjectManager.getLoginPage();
-	loginpage.openApplication();
-	loginpage.clickSignIn();
-	loginpage.userLogin();
-	loginpage.verifyUserName();
-	loginpage.clickTshirt();
+		webDriverManager = new WebDriverManager();
+	    driver=webDriverManager.getDriver();
+	    pageObjectManager = new PageObjectManager(driver);
+		loginpage = pageObjectManager.getLoginPage();    
+		loginpage.openApplication();
+		loginpage.clickSignIn();
+		loginpage.userLogin();
+		loginpage.verifyUserName();
+		loginpage.clickTshirt();
 	  	}
 	
 	

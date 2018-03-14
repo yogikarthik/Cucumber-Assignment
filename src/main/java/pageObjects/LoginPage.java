@@ -1,8 +1,11 @@
 package pageObjects;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
@@ -10,16 +13,21 @@ import org.openqa.selenium.support.PageFactory;
 import dataproviders.ConfigFileReader;
 import managers.FileReaderManager;
 import managers.PageObjectManager;
+import managers.WebDriverManager;
 
 public class LoginPage extends ConfigFileReader{
 	WebDriver driver;
 	ConfigFileReader configFileReader;
+	PageObjectManager pageObjectManager;
+	WebDriverManager webDriverManager;
+	LoginPage loginpage;
 	
 	public LoginPage(WebDriver driver){
 		this.driver = driver;
+		
 		PageFactory.initElements(driver,this);
-		configFileReader=new ConfigFileReader();
-	}
+		}
+	
 @FindBy(how=How.XPATH, using= "//a[@class='login']")
 private WebElement Link_signIn;
 @FindBy(how=How.XPATH, using= "//h1[contains(text(),'Authentication')]")
@@ -38,6 +46,7 @@ private WebElement Title_MyAccount;
 private WebElement Option_Tshirts; 
 
     public void openApplication(){    	
+    	
     	driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
     	
     }
