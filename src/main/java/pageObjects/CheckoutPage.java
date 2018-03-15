@@ -66,6 +66,13 @@ public class CheckoutPage {
 		Title_Payment.isDisplayed();
 		Option_Bankwire.click();
 	}
+	public void selectPaymentMode(){
+		clickProceedToChkoutBtn2();
+		clickProceedToChkoutBtn3();
+		clickTermsChkboxandchkoutBtn4();
+		selectPaymentOption();
+		
+	}
 	
 
 

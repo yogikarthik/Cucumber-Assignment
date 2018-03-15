@@ -49,12 +49,8 @@ public class OrderTshirt {
 	    driver=webDriverManager.getDriver();
 	    pageObjectManager = new PageObjectManager(driver);
 		loginpage = pageObjectManager.getLoginPage();    
-		loginpage.openApplication();
-		loginpage.clickSignIn();
-		loginpage.userLogin();
-		loginpage.verifyUserName();
-		loginpage.clickTshirt();
-	  	}
+		loginpage.signIntotheapp();
+		}
 	
 	
 	
@@ -62,38 +58,32 @@ public class OrderTshirt {
 	public void user_selects_a_product_and_add_it_to_cart() throws Throwable {	
 		
 		productselectionpage = pageObjectManager.getProductSelectionPage();
-		productselectionpage.chkSelectionPage();			
-		productselectionpage.isProductDisplayed();
+		productselectionpage.selectProduct();
 		checkoutpage = pageObjectManager.getCheckoutPage();
-	    checkoutpage.clickProceedToChkoutBtn2();
-	    checkoutpage.clickProceedToChkoutBtn3();
-	    checkoutpage.clickTermsChkboxandchkoutBtn4();
-	    checkoutpage.selectPaymentOption();
-		}	
+	    checkoutpage.selectPaymentMode();
+	    }	
+	
+	
 	@And("^user orders a Tshirt$")
 	public void order_summary_page_displayed_and_user_clicks_I_confirm_Order_button() throws Throwable {
 		paymentpage = pageObjectManager.getPaymentPage();
-		paymentpage.clickConfirmBtn();
-		paymentpage.orderConfirmationPageDisplayed();
-		paymentpage.navigateToOrders();
+		paymentpage.orderTshirt();
+		
 	}
 
 	@Then("^order is reflecting in order history$")
 	public void order_is_reflecting_in_order_history() throws Throwable {		
 		orderhistorypage = pageObjectManager.getOrderHistoryPage();
-		orderhistorypage.orderHistoryPageDisplayed();
-		orderhistorypage.clickOrderReferenceLink();
-		orderhistorypage.verifyOrderedItemName();
-	    
+		orderhistorypage.verifyOrderHistory();
+		    
 	   }
 	
 	
 	@When("^user updates personal information$")
 	public void user_updates_personal_information(){
 		userinformationpage = pageObjectManager.getUserInformationPage();
-		userinformationpage.clickUsername();
-		userinformationpage.clickUserInformationtab();
-		userinformationpage.updateUserInformation();
+		userinformationpage.updatePersonalInfo();
+		
 	}
 	
 	

@@ -34,4 +34,12 @@ public class OrderHistoryPage {
 		OrderedItemName.equals(ActualOrderItem);
 		driver.close();
 	}
+	public void verifyOrderHistory(){
+		orderHistoryPageDisplayed();
+		clickOrderReferenceLink();
+		verifyOrderedItemName();
+		
+		
+		
+	}
 }

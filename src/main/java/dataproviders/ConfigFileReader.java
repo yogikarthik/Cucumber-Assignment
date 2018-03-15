@@ -14,6 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import cucumber.api.java.Before;
 import enums.DriverType;
 import enums.EnvironmentType;
+import managers.FileReaderManager;
 import managers.PageObjectManager;
 import managers.WebDriverManager;
 import pageObjects.CheckoutPage;
@@ -29,7 +30,7 @@ public class ConfigFileReader {
 	WebDriverManager webDriverManager;
 	LoginPage loginpage;
 	PageObjectManager pageObjectManager;
-	WebDriver driver;
+	public WebDriver driver;
 	
 	
 	public ConfigFileReader(){
@@ -65,11 +66,11 @@ public class ConfigFileReader {
 			return 30;
 				}
 		public void initiateBrowser(){
-			webDriverManager = new WebDriverManager();
-		    driver=webDriverManager.getDriver();
-		    //pageObjectManager = new PageObjectManager(driver);
-			//loginpage = pageObjectManager.getLoginPage();
+			DriverType driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
+			EnvironmentType environmentType = FileReaderManager.getInstance().getConfigReader().getEnvironment();
+		    
 		}
+		
 			
 		public String getDriverPath(){
 			String driverPath=properties.getProperty("driverPath");

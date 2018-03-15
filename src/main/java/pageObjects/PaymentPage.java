@@ -56,4 +56,15 @@ WebDriver driver;
 	public void navigateToOrders(){
 		Navigate_Backtoorders.click();
 	}
+	
+	public void orderTshirt(){
+		clickConfirmBtn();
+		orderConfirmationPageDisplayed();
+		navigateToOrders();
+		
+		
+		
+	}
+	
+	
 }

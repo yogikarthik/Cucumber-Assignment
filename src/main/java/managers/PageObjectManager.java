@@ -12,9 +12,9 @@ import pageObjects.UserInformationPage;
 
 public class PageObjectManager {
 
-	private WebDriver driver;
+	public WebDriver driver;
 	private CheckoutPage checkoutpage;
-	private LoginPage loginpage;
+	public LoginPage loginpage;
 	private OrderHistoryPage orderhistorypage;
 	private PaymentPage paymentpage;
 	private ProductSelectionPage productselectionpage;
@@ -23,10 +23,12 @@ public class PageObjectManager {
 	
 	
 	public PageObjectManager(WebDriver driver) {
+		
 		 
 		this.driver = driver;
  
 	}
+	
 	
 	public LoginPage getLoginPage(){
 		 

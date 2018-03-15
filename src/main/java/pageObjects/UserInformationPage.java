@@ -56,6 +56,14 @@ WebDriver driver;
 			System.out.println("The user information has been updated successfully");
 		}
 	}
+	public void updatePersonalInfo(){
+		clickUsername();
+		clickUserInformationtab();
+		updateUserInformation();
+		
+		
+		
+	}
 	
 
 }

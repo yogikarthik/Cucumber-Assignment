@@ -45,8 +45,7 @@ private WebElement Title_MyAccount;
 @FindBy(how=How.XPATH, using= "//a[contains(text(),'T-shirts')]/following::*[contains(text(),'T-shirts')]")
 private WebElement Option_Tshirts; 
 
-    public void openApplication(){    	
-    	
+    public void openApplication(){       	
     	driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
     	
     }
@@ -73,6 +72,13 @@ private WebElement Option_Tshirts;
 		if(Title_MyAccount.isDisplayed()){
 		Option_Tshirts.click();
 	}
+	}
+	public void signIntotheapp(){
+		openApplication();
+		clickSignIn();
+		userLogin();
+		verifyUserName();
+		clickTshirt();
 	}
 	
 }

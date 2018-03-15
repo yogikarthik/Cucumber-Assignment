@@ -56,7 +56,15 @@ public class ProductSelectionPage {
 		}driver.switchTo().window(winhandle);
 		
 	  }
+					
 		}
+		
+	public void selectProduct() throws Exception {
+		chkSelectionPage();
+		isProductDisplayed();
+		
+		
+	}
 	
 	
 	
