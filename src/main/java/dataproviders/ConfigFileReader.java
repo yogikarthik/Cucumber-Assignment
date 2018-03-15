@@ -9,6 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.PageFactory;
 
 import cucumber.api.java.Before;
@@ -24,13 +26,14 @@ import pageObjects.PaymentPage;
 import pageObjects.ProductSelectionPage;
 import pageObjects.UserInformationPage;
 
-public class ConfigFileReader {
-	private Properties properties;
+public class ConfigFileReader  {
+	protected Properties properties;
 	private final String propertyFilepath="Configs//configurations.properties";
 	WebDriverManager webDriverManager;
 	LoginPage loginpage;
 	PageObjectManager pageObjectManager;
 	public WebDriver driver;
+	
 	
 	
 	public ConfigFileReader(){
@@ -65,14 +68,7 @@ public class ConfigFileReader {
 			}
 			return 30;
 				}
-		public void initiateBrowser(){
-			DriverType driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
-			EnvironmentType environmentType = FileReaderManager.getInstance().getConfigReader().getEnvironment();
-		    
-		}
-		
-			
-		public String getDriverPath(){
+			public String getDriverPath(){
 			String driverPath=properties.getProperty("driverPath");
 			if(driverPath!= null) return driverPath;
 			else throw new RuntimeException("driverPath not specified in the configuration.properties file.");		

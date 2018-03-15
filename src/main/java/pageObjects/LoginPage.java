@@ -45,8 +45,9 @@ private WebElement Title_MyAccount;
 @FindBy(how=How.XPATH, using= "//a[contains(text(),'T-shirts')]/following::*[contains(text(),'T-shirts')]")
 private WebElement Option_Tshirts; 
 
-    public void openApplication(){       	
-    	driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+    public void openApplication(){  
+    	String url = properties.getProperty("url");
+    	driver.get(url);
     	
     }
     public void clickSignIn(){
@@ -56,14 +57,17 @@ private WebElement Option_Tshirts;
     }
 	public void userLogin(){		
 		if(Title_Authentication.isDisplayed()){
-		Textbox_Email.sendKeys(FileReaderManager.getInstance().getConfigReader().enterUserName());	
-		Textbox_Pwd.sendKeys(FileReaderManager.getInstance().getConfigReader().enterpassword());
+		String uname=properties.getProperty("uname");
+		String pwd = properties.getProperty("pwd");		
+		Textbox_Email.sendKeys(uname);	
+		Textbox_Pwd.sendKeys(pwd);
 		button_Signin.click();
 	}
 	}
 	public void verifyUserName(){
 		String ActualValue=Verify_Username.getText();
-		if(ActualValue.equalsIgnoreCase(FileReaderManager.getInstance().getConfigReader().getUserName())){
+		String registeredUserName = properties.getProperty("registeredUserName");
+		if(ActualValue.equalsIgnoreCase(registeredUserName)){
 			System.out.println("The application opened for the registered user");
 			String PageTitle=Title_MyAccount.getText();
 		}

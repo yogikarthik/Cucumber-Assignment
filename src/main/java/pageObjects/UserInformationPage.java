@@ -45,7 +45,6 @@ WebDriver driver;
 	public void updateUserInformation(){
 		if(Title_PersonalInformation.isDisplayed()){
 			Textbox_FirstName.click();
-			//Textbox_FirstName.sendKeys(Keys.ENTER);;
 			Textbox_FirstName.sendKeys("");
 			Textbox_oldpwd.sendKeys("12345");
 			Button_Save.click();
